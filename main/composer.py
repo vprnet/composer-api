@@ -4,7 +4,9 @@ import pprint
 from config import COMPOSER_UCS as UCS
 
 TZ = 'US/Eastern'
-today = arrow.utcnow().to(TZ).format("YYYY-MM-DD")
+today = arrow.utcnow().to(TZ)
+last_week = today.replace(days=-7).format("YYYY-MM-DD")
+today = today.format("YYYY-MM-DD")
 
 API_BASE = 'https://api.composer.nprstations.org/v1/widget/%s/' % UCS
 
@@ -18,12 +20,11 @@ def now_playing(format='json'):
 
     url = "%snow?format=%s" % (API_BASE, format)
     r = requests.get(url)
-    print url
     return r.json()
 
 
 def write_response(response):
-    with open("main/response.json", "w+") as f:
+    with open("main/response.html", "w+") as f:
         f.write(response)
 
 
@@ -49,11 +50,10 @@ def test_now_playing():
 def programs_for_day(date=today, format='json'):
     """Returns a list of the day's programs
     Query: https://api.composer.nprstations.org/v1/widget/UCS/day?
-    date=2014-09-10&format=json"""
+        date=2014-09-10&format=json"""
 
     url = "%sday?date=%s&format=%s" % (API_BASE, date, format)
     r = requests.get(url)
-    print url
     return r.json()
 
 
@@ -65,5 +65,13 @@ def test_programs_for_day():
         end_time = program['end_time']
         print name, start_time, end_time
 
+
+def programs_for_week(date1=today, date2=last_week, format="html"):
+    """Returns an HTML table of the weekly program schedule
+    Query: https://api.composer.nprstations.org/v1/widget/UCS/week?
+        date=2014-09-03,2014-09-10&format=html"""
+    url = "%sweek?date=%s,%s&format=%s" % (API_BASE, date2, date1, format)
+    r = requests.get(url)
+    return r.text
+
 test_now_playing()
-test_programs_for_day()
