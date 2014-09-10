@@ -12,6 +12,8 @@ AWS_DIRECTORY = 'sandbox/app/'
 
 NPR_API_KEY = ''
 
+COMPOSER_UCS = ''
+
 GOOGLE_SPREADSHEET = {'USER': '',
     'PASSWORD': '',
     'SOURCE': ''}
