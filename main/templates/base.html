@@ -4,92 +4,157 @@
     <meta charset="utf-8">
     <title>{% block title %}Vermont Public Radio{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Helvetica;
+    }
+
+    h2 {
+        font-weight: 600;
+        margin: 15px 0;
+        text-decoration: underline;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+    }
+    h4 {
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
+    div {
+        margin-bottom: 5px;
+    }
+</style>
+
 </head>
 
 <body>
 
-<h1>VPR Classical</h1>
-
 <h2>On Now</h2>
 
-<h3 id="program-on-air"></h3>
-<p id="program-time"><span id="program-start"></span> &mdash; <span id="program-end"></span></p>
+<div id="program">
+    <h3 id="program-on-air"></h3>
+    <p id="program-time"><span id="program-start"></span> &mdash; <span id="program-end"></span></p>
+</div>
 
-<h4>Playing Now</h4>
-<p id="track-playing"><span id="composer"></span> - <span id="track-name"></span> <span id="track-start-time"></span></p>
+<div id="song">
+    <h4>Playing Now</h4>
+    <p id="track-playing"><span id="composer"></span> - <span id="track-name"></span> <span id="track-start-time"></span></p>
+</div>
 
-<h2>Up Next</h2>
-<h3 id="program-up-next"></h3>
-<p id="next-program-time"><span id="next-program-start"></span> &mdash; <span id="next-program-end"></span></p>
+<div id="up-next">
+    <h2>Up Next</h2>
+    <h3 id="program-up-next"></h3>
+    <p id="next-program-time"><span id="next-program-start"></span> &mdash; <span id="next-program-end"></span></p>
+</div>
 
-
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
-    var VPR = {};
+// self calling anonymous function
+(function() {
+    var url = 'https://api.composer.nprstations.org/v1/widget/518028fee1c810b152ff9766/now?format=json',
+        httpRequest,
+        programOnNow,
+        programUpNext,
+        trackOnNow,
+        callComposer = function(url, eventHandler) {
+            if (window.XMLHttpRequest) {
+                httpRequest = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                try {
+                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try {
+                        httpRequest = new activeXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {}
+                }
+            }
 
-    VPR.callComposer;
+            if (!httpRequest) {
+                alert("Fail, cannot create XMLHTTP instance");
+            }
 
-    VPR.getSong = function() {
-        $.get('https://api.composer.nprstations.org/v1/widget/518028fee1c810b152ff9766/now?format=json', function (data) {
+            httpRequest.onreadystatechange = function() {
+                if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                    eventHandler();
+                }
+        };
 
-            VPR.data = data;
-
-            VPR.programOnNow = {
-                'name': VPR.data.onNow.program.name,
-                'start': VPR.convertTime(VPR.data.onNow.start_time),
-                'end': VPR.convertTime(VPR.data.onNow.end_time)
-            };
-
-            VPR.trackOnNow = {
-                'name': VPR.data.onNow.song.trackName,
-                'composer': VPR.data.onNow.song.composerName,
-                'start': VPR.convertTime(VPR.data.onNow.song._start)
-            };
-
-            VPR.programUpNext = {
-                'name': VPR.data.nextUp[0].program.name,
-                'start': VPR.convertTime(VPR.data.nextUp[0].start_time),
-                'end': VPR.convertTime(VPR.data.nextUp[0].end_time)
-            };
-
-            VPR.updateFields();
-
-        });
+        httpRequest.open('GET', url)
+        httpRequest.send();
     };
 
-    VPR.convertTime = function(timestamp) {
-        var hour = timestamp.split(':')[0],
-            min = timestamp.split(':')[1],
-            dd = "AM";
 
-        if (parseInt(hour) >= 12) {
-            hour -= "12";
-            dd = "PM"
+    convertTime = function(timestamp) {
+        var hour = parseInt(timestamp.split(':')[0]),
+            min = timestamp.split(':')[1],
+            ampm = "AM";
+
+        if (hour >= 12) {
+            hour -= 12;
+            ampm = "PM"
         }
+
         if (hour == 0) {
             hour = "12";
         }
-        return hour + ":" + min + " " + dd;
-    }
 
-    VPR.updateFields = function() {
-        $('#program-on-air').text(VPR.programOnNow.name);
-        $('#program-start').text(VPR.programOnNow.start);
-        $('#program-end').text(VPR.programOnNow.end);
+        return hour.toString() + ":" + min + " " + ampm;
+    };
 
-        $('#composer').text(VPR.trackOnNow.composer);
-        $('#track-name').text(VPR.trackOnNow.name);
-        $('#track-start-time').text("(" + VPR.trackOnNow.start + ")");
+    updateFields = function() {
+        document.getElementById('program-on-air').textContent = programOnNow.name;
+        document.getElementById('program-start').textContent = programOnNow.start;
+        document.getElementById('program-end').textContent = programOnNow.end;
 
-        $('#program-up-next').text(VPR.programUpNext.name);
-        $('#next-program-start').text(VPR.programUpNext.start);
-        $('#next-program-end').text(VPR.programUpNext.end);
+        if (trackOnNow) {
+            document.getElementById('composer').textContent = trackOnNow.composer;
+            document.getElementById('track-name').textContent = trackOnNow.name;
+            document.getElementById('track-start-time').textContent = trackOnNow.start;
+        }
+
+        document.getElementById('program-up-next').textContent = programUpNext.name;
+        document.getElementById('next-program-start').textContent = programUpNext.start;
+        document.getElementById('next-program-end').textContent = programUpNext.end;
     };
 
 
-    VPR.getSong();
+    callComposer(url, function() {
+        data = JSON.parse(httpRequest.responseText);
 
+        programOnNow = {
+            'name': data.onNow.program.name,
+            'start': convertTime(data.onNow.start_time),
+            'end': convertTime(data.onNow.end_time),
+            'link': data.onNow.program.program_link
+        };
+
+        if (typeof data.onNow.song !== 'undefined') {
+            trackOnNow = {
+                'name': data.onNow.song.trackName,
+                'composer': data.onNow.song.composerName,
+                'start': convertTime(data.onNow.song._start)
+            };
+        }
+
+        programUpNext = {
+            'name': data.nextUp[0].program.name,
+            'start': convertTime(data.nextUp[0].start_time),
+            'end': convertTime(data.nextUp[0].end_time),
+            'link': data.nextUp[0].program.program_link
+        };
+
+        updateFields();
+    });
+
+})();
 </script>
 </body>
 </html>
