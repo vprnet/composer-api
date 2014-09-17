@@ -13,7 +13,9 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     // Explicitly list files to determine order
-                    'dev/js/*.js'
+                    'libs/*',
+                    'dev/handlebars/templates.js',
+                    'dev/js/script.js'
                 ],
                 dest: 'js/script.js'
             }
@@ -36,11 +38,11 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['dev/js/*.js'],
+                files: ['dev/js/*.js', 'dev/handlebars/templates.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
-                    livereload: true
+                    livereload: false
                 }
             },
             css: {
@@ -50,6 +52,15 @@ module.exports = function (grunt) {
             images: {
                 files: 'dev/img/*',
                 tasks: ['imagemin']
+            }
+        },
+        handlebars: {
+            compile: {
+                src: 'dev/handlebars/*.handlebars',
+                dest: 'dev/handlebars/templates.js',
+                options: {
+                    namespace: false
+                }
             }
         },
         cssmin: {
@@ -62,16 +73,6 @@ module.exports = function (grunt) {
                     ext: '.min.css'
                 }]
             }
-        },
-        browserSync: {
-            dev: {
-                bsFiles: {
-                    src: 'css/*.css'
-                },
-                options: {
-                    watchTask: true
-                }
-            }
         }
     });
 
@@ -82,8 +83,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
 
     // What tasks should be run when "grunt" is entered in the command line
-    grunt.registerTask('default', ['browserSync', 'watch']);
+    grunt.registerTask('default', ['watch']);
 
 };

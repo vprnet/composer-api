@@ -1,0 +1,28 @@
+<div id="program">
+    <h2>On Now</h2>
+    {{# if programOnNow.link }}
+    <h3><a href="{{ programOnNow.link }}">{{ programOnNow.name }}</a></h3>
+    {{ else }}
+    <h3>{{ programOnNow.name }}</h3>
+    {{/if}}
+    <p>{{ programOnNow.start }} - {{ programOnNow.end }}</p>
+</div>
+
+{{# if trackOnNow }}
+<div id="song">
+    <h4>Playing Now</h4>
+    <p>{{ trackOnNow.composer }} - {{ trackOnNow.name }} ({{ trackOnNow.start }})</p>
+</div>
+{{ else }}
+<p id="no-playlist">Playlist data unavailable for {{ programOnNow.name }}</p>
+{{/if}}
+
+<div id="up-next">
+    <h2>Up Next</h2>
+    {{# if programUpNext.link }}
+    <h3><a href="{{ programUpNext.link }}">{{ programUpNext.name }}</a></h3>
+    {{ else }}
+    <h3>{{ programUpNext.name }}</h3>
+    {{/if}}
+    <p>{{ programUpNext.start }} - {{ programUpNext.end }}</p>
+</div>
