@@ -4,8 +4,8 @@ from config import FREEZER_BASE_URL
 
 
 @app.route('/')
-def index():
-    page_title = 'VPR App Template'
+def now_playing():
+    page_title = 'Playing Now On VPR Classical'
     page_url = FREEZER_BASE_URL.rstrip('/') + request.path
 
     social = {
@@ -18,7 +18,7 @@ def index():
         'twitter_hashtag': ""
     }
 
-    return render_template('content.html',
+    return render_template('base.html',
         page_title=page_title,
         page_url=page_url,
         social=social)

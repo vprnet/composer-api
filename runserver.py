@@ -11,4 +11,5 @@ if len(sys.argv) > 1 and sys.argv[1] == 'freeze':
     freezer.freeze()
     set_metadata()
 else:
+    app.debug = True
     app.run()

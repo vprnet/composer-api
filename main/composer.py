@@ -1,3 +1,5 @@
+#!/usr/local/bin/python2.7
+
 import requests
 import arrow
 import pprint
@@ -19,6 +21,7 @@ def now_playing(format='json'):
     Query: https://api.composer.nprstations.org/v1/widget/UCS/now?format=json"""
 
     url = "%snow?format=%s" % (API_BASE, format)
+    print url
     r = requests.get(url)
     return r.json()
 
