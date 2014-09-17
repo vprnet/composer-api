@@ -74,17 +74,17 @@
     }
 
     VPR.updateFields = function() {
-        document.getElementById('program-on-air').textContent = VPR.programOnNow.name;
-        document.getElementById('program-start').textContent = VPR.programOnNow.start;
-        document.getElementById('program-end').textContent = VPR.programOnNow.end;
+        $('#program-on-air').text(VPR.programOnNow.name);
+        $('#program-start').text(VPR.programOnNow.start);
+        $('#program-end').text(VPR.programOnNow.end);
 
-        document.getElementById('composer').textContent = VPR.trackOnNow.composer;
-        document.getElementById('track-name').textContent = VPR.trackOnNow.name;
-        document.getElementById('track-start-time').textContent = "(" + VPR.trackOnNow.start + ")";
+        $('#composer').text(VPR.trackOnNow.composer);
+        $('#track-name').text(VPR.trackOnNow.name);
+        $('#track-start-time').text("(" + VPR.trackOnNow.start + ")");
 
-        document.getElementById('program-up-next').textContent = VPR.programUpNext.name;
-        document.getElementById('next-program-start').textContent = VPR.programUpNext.start;
-        document.getElementById('next-program-end').textContent = VPR.programUpNext.end;
+        $('#program-up-next').text(VPR.programUpNext.name);
+        $('#next-program-start').text(VPR.programUpNext.start);
+        $('#next-program-end').text(VPR.programUpNext.end);
     };
 
 
