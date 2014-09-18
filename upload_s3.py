@@ -22,7 +22,6 @@ def get_files(directory):
     file_paths = []
     for root, dirs, files in os.walk(directory):
         for f in files:
-            print root, dirs, files
             filepath = os.path.join(root, f)
             file_paths.append(filepath)
 

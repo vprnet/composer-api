@@ -663,18 +663,6 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['playingNow'] = template({"1":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <h3><a href=\""
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.link : stack1), depth0))
-    + "\">"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</a></h3>\n";
-},"3":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <h3>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</h3>\n";
-},"5":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
   return "<div id=\"song\">\n    <h4>Playing Now</h4>\n    <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.trackOnNow : depth0)) != null ? stack1.composer : stack1), depth0))
     + " - "
@@ -682,38 +670,29 @@ templates['playingNow'] = template({"1":function(depth0,helpers,partials,data) {
     + " ("
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.trackOnNow : depth0)) != null ? stack1.start : stack1), depth0))
     + ")</p>\n</div>\n";
-},"7":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "<p id=\"no-playlist\">Playlist data unavailable for "
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</p>\n";
-},"9":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <h3><a href=\""
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.link : stack1), depth0))
-    + "\">"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</a></h3>\n";
-},"11":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <h3>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</h3>\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"program\">\n    <h2>On Now</h2>\n";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.link : stack1), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.program(3, data),"data":data});
+},"3":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "<p id=\"no-playlist\">Playlist not available. ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.link : stack1), {"name":"if","hash":{},"fn":this.program(4, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "    <p>"
+  return buffer + "\n";
+},"4":function(depth0,helpers,partials,data) {
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
+  return "<a href=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.link : stack1), depth0))
+    + "\" target=\"_blank\">Contact the host</a> to inquire about a piece.</p>";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"program\">\n    <h2>On Now</h2>\n    <h3>"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h3>\n    <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.start : stack1), depth0))
     + " - "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programOnNow : depth0)) != null ? stack1.end : stack1), depth0))
     + "</p>\n</div>\n\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.trackOnNow : depth0), {"name":"if","hash":{},"fn":this.program(5, data),"inverse":this.program(7, data),"data":data});
+  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.trackOnNow : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.program(3, data),"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "\n<div id=\"up-next\">\n    <h2>Up Next</h2>\n";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.link : stack1), {"name":"if","hash":{},"fn":this.program(9, data),"inverse":this.program(11, data),"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "    <p>"
+  return buffer + "\n<div id=\"up-next\">\n    <h2>Up Next</h2>\n    <h3>"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h3>\n    <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.start : stack1), depth0))
     + " - "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.end : stack1), depth0))
@@ -742,79 +721,85 @@ templates['playingNow'] = template({"1":function(depth0,helpers,partials,data) {
                     try {
                         httpRequest = new activeXObject("Microsoft.XMLHTTP");
                     }
-                    catch (e) {}
+                    catch (e) {
+                        console.log("Error making httpRequest");
+                    }
                 }
             }
-
-            console.log("Things are happening");
 
             httpRequest.onreadystatechange = function() {
                 if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                     eventHandler();
                 }
         };
+            sendRequest();
+        },
 
-        httpRequest.open('GET', url());
-        httpRequest.send();
-    },
+        sendRequest = function() {
+            httpRequest.open('GET', url());
+            httpRequest.send();
+        },
 
-    createDict = function(data) {
-        programOnNow = {
-            'name': data.onNow.program.name,
-            'start': convertTime(data.onNow.start_time),
-            'end': convertTime(data.onNow.end_time),
-            'link': data.onNow.program.program_link
-        };
-
-        programUpNext = {
-            'name': data.nextUp[0].program.name,
-            'start': convertTime(data.nextUp[0].start_time),
-            'end': convertTime(data.nextUp[0].end_time),
-            'link': data.nextUp[0].program.program_link
-        };
-
-        if (typeof data.onNow.song !== 'undefined') {
-            trackOnNow = {
-                'name': data.onNow.song.trackName,
-                'composer': data.onNow.song.composerName,
-                'start': convertTime(data.onNow.song._start)
+        createDict = function(data) {
+            programOnNow = {
+                'name': data.onNow.program.name,
+                'start': convertTime(data.onNow.start_time),
+                'end': convertTime(data.onNow.end_time),
+                'link': data.onNow.program.program_link
             };
-        }
 
-        return {
-            'programOnNow': programOnNow,
-            'trackOnNow': trackOnNow,
-            'programUpNext': programUpNext
+            programUpNext = {
+                'name': data.nextUp[0].program.name,
+                'start': convertTime(data.nextUp[0].start_time),
+                'end': convertTime(data.nextUp[0].end_time),
+                'link': data.nextUp[0].program.program_link
+            };
+
+            if (typeof data.onNow.song !== 'undefined') {
+                trackOnNow = {
+                    'name': data.onNow.song.trackName,
+                    'composer': data.onNow.song.composerName,
+                    'start': convertTime(data.onNow.song._start_time.split(' ')[1])
+                };
+            }
+
+            return {
+                'programOnNow': programOnNow,
+                'trackOnNow': trackOnNow,
+                'programUpNext': programUpNext
+            };
+        },
+
+        convertTime = function(timestamp) {
+            var hour = parseInt(timestamp.split(':')[0], 10),
+                min = timestamp.split(':')[1],
+                ampm = "AM";
+
+            if (hour >= 12) {
+                hour -= 12;
+                ampm = "PM";
+            }
+
+            if (hour === 0) {
+                hour = "12";
+            }
+
+            return hour.toString() + ":" + min + " " + ampm;
+        },
+
+        updateTemplate = function() {
+            data = JSON.parse(httpRequest.responseText);
+            templateContext = createDict(data);
+
+            html = Handlebars.templates.playingNow(templateContext);
+
+            document.getElementById('playing-now').innerHTML = html;
         };
-    },
+        updateInterval = window.setInterval(function() {
+            sendRequest();
+        }, 60 * 1000);
 
-    convertTime = function(timestamp) {
-        var hour = parseInt(timestamp.split(':')[0], 10),
-            min = timestamp.split(':')[1],
-            ampm = "AM";
-
-        if (hour >= 12) {
-            hour -= 12;
-            ampm = "PM";
-        }
-
-        if (hour === 0) {
-            hour = "12";
-        }
-
-        return hour.toString() + ":" + min + " " + ampm;
-    },
-
-    updateTemplate = function() {
-        data = JSON.parse(httpRequest.responseText);
-        templateContext = createDict(data);
-
-        html = Handlebars.templates.playingNow(templateContext);
-
-        document.getElementById('playing-now').innerHTML = html;
-    };
-
-    window.setInterval(callComposer(url, updateTemplate), 60 * 1000);
+    callComposer(url, updateTemplate);
 
 })();
 
