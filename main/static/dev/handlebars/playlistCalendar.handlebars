@@ -1,0 +1,26 @@
+{{#each dailySchedule}}
+    {{# if link }}
+    <h2><a href="{{ link }}">{{ name }}</a></h2>
+    {{ else }}
+    <h2>{{ name }}</h2>
+    {{/ if }}
+    <p>{{ start }} - {{ end }}</p>
+    <div class="playlist">
+        {{# if playlist }}
+            <h3>Playlist</h3>
+            {{#each  playlist }}
+            <div class="song">
+                <p>{{ composerName }} - {{ trackName }}</p>
+                <p>{{ startTime }}</p>
+                <p><a href="{{ link }}">Purchase Song</a></p>
+            </div>
+            {{/each}}
+        {{ else }}
+            {{# if future }}
+                <p>Playlist data will be available for songs once they have aired</p>
+            {{ else }}
+                <p>Playlist is unavailable for this program. <a href="{{ link }}">Contact the host</a> for playlist information</p>
+            {{/ if }}
+        {{/ if }}
+    </div>
+{{/each}}

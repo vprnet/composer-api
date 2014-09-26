@@ -10,20 +10,31 @@ module.exports = function (grunt) {
             }
         },
         concat: {
-            dist: {
+            nowPlaying: {
                 src: [
                     // Explicitly list files to determine order
-                    'libs/*',
-                    'dev/handlebars/templates.js',
-                    'dev/js/script.js'
+                    'libs/handlebars.js',
+                    'dev/handlebars/nowHandlebars.js',
+                    'dev/js/nowWidget.js'
                 ],
-                dest: 'js/script.js'
+                dest: 'js/nowScript.js'
+            },
+            playlistCalendar: {
+                src: [
+                    'libs/handlebars.js',
+                    'libs/pikaday.js',
+                    'dev/handlebars/calendarHandlebars.js',
+                    'dev/js/calendarWidget.js'
+                ],
+                dest: 'js/calendarScript.js'
             }
         },
         uglify: {
             build: {
-                src: 'js/script.js',
-                dest: 'js/script.min.js'
+                files: {
+                    'js/calendarScript.min.js': 'js/calendarScript.js',
+                    'js/nowScript.min.js': 'js/nowScript.js'
+                }
             }
         },
         imagemin: {
@@ -38,7 +49,9 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['dev/js/*.js', 'dev/handlebars/templates.js'],
+                files: ['dev/js/*.js',
+                    'dev/handlebars/nowHandlebars.js',
+                    'dev/handlebars/calendarHandlebars.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
