@@ -1,2 +1,55 @@
 @import "pikaday";
 @import "site";
+
+$green: #509e2f;
+$green2: #b5bd00;
+$gray: #75787b;
+$orange: #ed8b00;
+$red: #e04e39;
+$blue: #307fe2;
+$percent: 3%;
+$btn-percent: 1%;
+$black: #3f4444;
+$tablet: 768px;
+$phone: 500px;
+$laptop: 1000px;
+$big-screen: 1200px;
+$white: darken(white, 5%);
+
+html {
+    color: $black;
+}
+
+a {
+    color: $blue;
+}
+
+h2 {
+    margin-bottom: 0;
+    font-size: 32px;
+}
+
+.program-time {
+    margin: 0 0 15px;
+    color: $gray;
+    line-height: 1.2em;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+div.playlist {
+    padding-left: 20px;
+    margin-bottom: 40px;
+    margin-left: 2px;
+    border-left: 7px solid lighten($gray, 30%);
+    div.song {
+        margin: 10px 0;
+        p {
+            margin: 0;
+            line-height: 1.3em;
+        }
+        .composer {
+            font-weight: 600;
+        }
+    }
+}

@@ -314,3 +314,49 @@ button#datepicker-button {
 #container {
   min-height: 15em;
 }
+
+/* line 19, ../dev/sass/style.scss */
+html {
+  color: #3f4444;
+}
+
+/* line 23, ../dev/sass/style.scss */
+a {
+  color: #307fe2;
+}
+
+/* line 27, ../dev/sass/style.scss */
+h2 {
+  margin-bottom: 0;
+  font-size: 32px;
+}
+
+/* line 32, ../dev/sass/style.scss */
+.program-time {
+  margin: 0 0 15px;
+  color: #75787b;
+  line-height: 1.2em;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* line 40, ../dev/sass/style.scss */
+div.playlist {
+  padding-left: 20px;
+  margin-bottom: 40px;
+  margin-left: 2px;
+  border-left: 7px solid #c3c5c6;
+}
+/* line 45, ../dev/sass/style.scss */
+div.playlist div.song {
+  margin: 10px 0;
+}
+/* line 47, ../dev/sass/style.scss */
+div.playlist div.song p {
+  margin: 0;
+  line-height: 1.3em;
+}
+/* line 51, ../dev/sass/style.scss */
+div.playlist div.song .composer {
+  font-weight: 600;
+}

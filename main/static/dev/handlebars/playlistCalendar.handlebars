@@ -4,15 +4,14 @@
     {{ else }}
     <h2>{{ name }}</h2>
     {{/ if }}
-    <p>{{ start }} - {{ end }}</p>
+    <p class="program-time">{{ start }} - {{ end }}</p>
     <div class="playlist">
         {{# if playlist }}
-            <h3>Playlist</h3>
             {{#each  playlist }}
             <div class="song">
-                <p>{{ composerName }} - {{ trackName }}</p>
-                <p>{{ startTime }}</p>
-                <p><a href="{{ link }}">Purchase Song</a></p>
+                <p class="composer">{{ composerName }} - {{ trackName }}</p>
+                <p class="start-time">{{ startTime }}</p>
+                <p class="purchase"><a href="{{ link }}">Purchase Song</a></p>
             </div>
             {{/each}}
         {{ else }}

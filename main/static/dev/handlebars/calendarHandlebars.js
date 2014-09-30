@@ -4,7 +4,7 @@ templates['playlistCalendar'] = template({"1":function(depth0,helpers,partials,d
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "";
   stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.link : depth0), {"name":"if","hash":{},"fn":this.program(2, data),"inverse":this.program(4, data),"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "    <p>"
+  buffer += "    <p class=\"program-time\">"
     + escapeExpression(((helper = (helper = helpers.start || (depth0 != null ? depth0.start : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"start","hash":{},"data":data}) : helper)))
     + " - "
     + escapeExpression(((helper = (helper = helpers.end || (depth0 != null ? depth0.end : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"end","hash":{},"data":data}) : helper)))
@@ -25,19 +25,19 @@ templates['playlistCalendar'] = template({"1":function(depth0,helpers,partials,d
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
     + "</h2>\n";
 },"6":function(depth0,helpers,partials,data) {
-  var stack1, buffer = "            <h3>Playlist</h3>\n";
+  var stack1, buffer = "";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.playlist : depth0), {"name":"each","hash":{},"fn":this.program(7, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"7":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "            <div class=\"song\">\n                <p>"
+  return "            <div class=\"song\">\n                <p class=\"composer\">"
     + escapeExpression(((helper = (helper = helpers.composerName || (depth0 != null ? depth0.composerName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"composerName","hash":{},"data":data}) : helper)))
     + " - "
     + escapeExpression(((helper = (helper = helpers.trackName || (depth0 != null ? depth0.trackName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"trackName","hash":{},"data":data}) : helper)))
-    + "</p>\n                <p>"
+    + "</p>\n                <p class=\"start-time\">"
     + escapeExpression(((helper = (helper = helpers.startTime || (depth0 != null ? depth0.startTime : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"startTime","hash":{},"data":data}) : helper)))
-    + "</p>\n                <p><a href=\""
+    + "</p>\n                <p class=\"purchase\"><a href=\""
     + escapeExpression(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"link","hash":{},"data":data}) : helper)))
     + "\">Purchase Song</a></p>\n            </div>\n";
 },"9":function(depth0,helpers,partials,data) {

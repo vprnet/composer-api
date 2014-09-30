@@ -91,8 +91,9 @@
         Song = function(songObject) {
             this.trackName = songObject.trackName;
             this.composerName = songObject.composerName;
-            this.startTime = convertTime(songObject._start_time);
+            this.startTime = convertTime(songObject._start_time.split(' ')[1]);
             this.link = songObject.buy.arkiv;
+            console.log(songObject._start_time);
         },
         dailySchedule = function(data) {
             var programs = [];
