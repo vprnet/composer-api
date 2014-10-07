@@ -1,25 +1,29 @@
+<h2 id="playlist-date">Playlist for {{ dateString }}</h2>
+
 {{#each dailySchedule}}
-    {{# if link }}
-    <h2><a href="{{ link }}">{{ name }}</a></h2>
-    {{ else }}
-    <h2>{{ name }}</h2>
-    {{/ if }}
-    <p class="program-time">{{ start }} - {{ end }}</p>
-    <div class="playlist">
-        {{# if playlist }}
-            {{#each  playlist }}
-            <div class="song">
-                <p class="composer">{{ composerName }} - {{ trackName }}</p>
-                <p class="start-time">{{ startTime }}</p>
-                <p class="purchase"><a href="{{ link }}">Purchase Song</a></p>
-            </div>
-            {{/each}}
+    <div id="{{ id }}" class="program">
+        {{# if link }}
+        <h2><a href="{{ link }}">{{ name }}</a></h2>
         {{ else }}
-            {{# if future }}
-                <p>Playlist data will be available for songs once they have aired</p>
-            {{ else }}
-                <p>Playlist is unavailable for this program. <a href="{{ link }}">Contact the host</a> for playlist information</p>
-            {{/ if }}
+        <h2>{{ name }}</h2>
         {{/ if }}
+        <p class="program-time">{{ start }} - {{ end }}</p>
+        <div class="playlist{{# if future }} future{{/ if }}">
+            {{# if playlist }}
+                {{#each  playlist }}
+                <div class="song">
+                    <p class="composer">{{ composerName }} - {{ trackName }}</p>
+                    <p class="start-time">{{ startTime }}</p>
+                    <p class="purchase"><a href="{{ link }}">Purchase Song</a></p>
+                </div>
+                {{/each}}
+            {{ else }}
+                {{# if future }}
+                {{ else }}
+                    <p>Playlist is unavailable for this program. <a href="{{ link }}">Contact the host</a> for playlist information</p>
+                {{/ if }}
+            {{/ if }}
+        </div>
+        <a href="?date={{ date }}#{{ id }}"><i class="icon ion-link"></i></a>
     </div>
 {{/each}}

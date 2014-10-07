@@ -4,11 +4,19 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>This is the VPR App Template</h2>
+    <div class="col-sm-7">
+        <p class="input-help-text">Looking for something you heard recently?</p>
+        <input type="text" id="datepicker" placeholder="Pick a date">
+        <div id="calendar">
         </div>
     </div>
+    <div class="col-sm-5">
+        {% include "_underwriter.html" %}
+        {% include "_marcomm.html" %}
+    </div>
 </div>
+{% endblock %}
 
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/calendarScript.js') }}"></script>
 {% endblock %}

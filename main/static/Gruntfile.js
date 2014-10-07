@@ -21,6 +21,7 @@ module.exports = function (grunt) {
             },
             playlistCalendar: {
                 src: [
+                    'libs/history.js',
                     'libs/handlebars.js',
                     'libs/pikaday.js',
                     'dev/handlebars/calendarHandlebars.js',
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
-                    livereload: false
+                    livereload: true
                 }
             },
             css: {
@@ -86,6 +87,16 @@ module.exports = function (grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: 'css/*.css'
+                },
+                options: {
+                    watchTask: true
+                }
+            }
         }
     });
 
@@ -99,6 +110,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-handlebars');
 
     // What tasks should be run when "grunt" is entered in the command line
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['browserSync', 'watch']);
 
 };

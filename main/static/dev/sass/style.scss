@@ -1,55 +1,94 @@
+@import "bootstrap";
+@import "vpr";
+@import "vpr-svg";
+@import "compass/css3";
+@import "ionicons";
 @import "pikaday";
 @import "site";
 
-$green: #509e2f;
-$green2: #b5bd00;
-$gray: #75787b;
-$orange: #ed8b00;
-$red: #e04e39;
-$blue: #307fe2;
-$percent: 3%;
-$btn-percent: 1%;
-$black: #3f4444;
-$tablet: 768px;
-$phone: 500px;
-$laptop: 1000px;
-$big-screen: 1200px;
-$white: darken(white, 5%);
-
 html {
     color: $black;
+    body {
+        padding: 0;
+    }
 }
 
 a {
     color: $blue;
 }
 
-h2 {
-    margin-bottom: 0;
-    font-size: 32px;
-}
+div.program {
+    position: relative;
+    h2 {
+        margin-bottom: 0;
+        font-size: 32px;
+    }
+    .program-time {
+        margin: 0 0 15px;
+        color: $gray;
+        line-height: 1.2em;
+        font-size: 18px;
+        font-weight: 500;
+        padding-left: 2px;
+    }
+    div.playlist {
+        font-size: 18px;
+        padding-left: 20px;
+        margin-bottom: 40px;
+        margin-left: 2px;
+        border-left: 7px solid lighten($gray, 30%);
+        div.song {
+            margin: 10px 0;
+            p {
+                font-size: 18px;
+                margin: 0;
+                line-height: 1.3em;
+            }
+            .composer {
+                font-weight: 600;
+            }
+            .start-time {
+                color: $gray;
+            }
+            .purchase, .start-time {
+                font-size: 15px;
+                font-weight: 500;
+            }
 
-.program-time {
-    margin: 0 0 15px;
-    color: $gray;
-    line-height: 1.2em;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-div.playlist {
-    padding-left: 20px;
-    margin-bottom: 40px;
-    margin-left: 2px;
-    border-left: 7px solid lighten($gray, 30%);
-    div.song {
-        margin: 10px 0;
-        p {
-            margin: 0;
-            line-height: 1.3em;
         }
-        .composer {
-            font-weight: 600;
+    }
+    i.icon {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 36px;
+    }
+    &:hover {
+        i.icon {
+            display: block;
         }
     }
 }
+
+#playlist-date {
+    margin-bottom: 20px;
+    text-decoration: underline;
+    font-size: 42px;
+}
+
+#datepicker {
+    display: inline-block;
+    width: 200px;
+    @include border-radius(3px);
+    font-size: 14px;
+    text-align: center;
+    padding: 1px;
+}
+
+p.input-help-text {
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 15px;
+}
+

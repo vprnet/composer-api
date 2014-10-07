@@ -1,20 +1,37 @@
+var state;
 (function () {
     var httpRequest,
+        date = new Date(),
         zeroPaddedNumber = function(n) {
             if (n < 10) {
                 n = '0' + n;
             }
             return n;
         },
-        url = function(date) {
-            if (typeof date === 'undefined') {
-                date = new Date();
+        query = function(d) {
+            // concatenate API call with URL string
+            if (typeof d === 'undefined') {
+                if (window.location.search.indexOf('?') !== (-1)) {
+                    d = window.location.search.split('=')[1];
+                    date = new Date(d.split('-'));
+                } else {
+                    d = getDateString(new Date());
+                }
             }
-
-            dateString = date.getFullYear() + '-' + zeroPaddedNumber(date.getMonth() + 1) + '-' + zeroPaddedNumber(date.getDate());
-            return 'https://api.composer.nprstations.org/v1/widget/518028fee1c810b152ff9766/day?format=json&date=' + dateString;
+            return 'https://api.composer.nprstations.org/v1/widget/518028fee1c810b152ff9766/day?format=json&date=' + d;
         },
-        callComposer = function(url, eventHandler) {
+        getDateString = function(d) {
+            // take a Date object, convert to API friendly string
+            dateString = d.getFullYear() + '-' + zeroPaddedNumber(d.getMonth() + 1) + '-' + zeroPaddedNumber(d.getDate());
+            return dateString;
+        },
+        makeHumanDate = function(d) {
+            // take a Date object, convert to human readable form
+            var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dev'];
+            return week[d.getDay()] + ', ' + month[d.getMonth()] + ' ' + d.getDate();
+        },
+        callComposer = function(eventHandler) {
             if (window.XMLHttpRequest) {
                 httpRequest = new XMLHttpRequest();
             } else if (window.ActiveXObject) {
@@ -38,11 +55,13 @@
             };
             sendRequest();
         },
-        sendRequest = function(date) {
-            httpRequest.open('GET', url(date));
+        sendRequest = function(d) {
+            httpRequest.open('GET', query(d));
+            console.log(query(d));
             httpRequest.send();
         },
         convertTime = function(timestamp) {
+            // takes API timestamp and converts to readable form
             var hour = parseInt(timestamp.split(':')[0], 10),
                 min = timestamp.split(':')[1],
                 ampm = "AM";
@@ -61,9 +80,11 @@
 
         Program = function(programObject) {
             this.name = programObject.program.name;
+            this.id = this.name.replace(/\s+/g, '-');
             this.start = convertTime(programObject.start_time);
             this.end = convertTime(programObject.end_time);
             this.link = programObject.program.program_link;
+            this.date = programObject.date;
             this.future = function() {
                 var datestamp = programObject.date.split('-'),
                     h = programObject.start_time.split(':')[0],
@@ -105,19 +126,33 @@
             field: document.getElementById('datepicker'),
             maxDate: new Date(),
             onSelect: function() {
-                sendRequest(this.getDate());
+                var d;
+                date = this.getDate();
+                d = getDateString(date);
+                sendRequest(d);
+                History.pushState({'date': d, 'stamp': date},
+                    "VPR Classical Playlist Calendar" ,
+                    window.location.pathname + "?date=" + d);
             }
         }),
         updateTemplate = function() {
             var response = JSON.parse(httpRequest.responseText).onToday,
-                content = {'dailySchedule': dailySchedule(response)},
+                content = {'dailySchedule': dailySchedule(response),
+                    'dateString': makeHumanDate(date)},
                 html = Handlebars.templates.playlistCalendar(content);
 
             document.getElementById('calendar').innerHTML = html;
         };
 
-
-    callComposer(url, function() {
+    callComposer(function() {
         updateTemplate();
+    });
+
+    History.Adapter.bind(window, 'statechange', function() {
+        var state = History.getState(),
+            d = state.data.date;
+
+        date = new Date(d.split('-'));
+        sendRequest(d);
     });
 })();

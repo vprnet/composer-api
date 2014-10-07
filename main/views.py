@@ -23,7 +23,7 @@ def playlist_calendar():
 
     social = False
 
-    return render_template('playlist-calendar.html',
+    return render_template('content.html',
         page_title=page_title,
         page_url=page_url,
         social=social)
