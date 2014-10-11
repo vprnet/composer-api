@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page_title }} | VPR{% endblock %}
+{% block title %}{{ page_title }} | VPR Classical{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="col-sm-7">
-        <p class="input-help-text">Looking for something you heard recently?</p>
-        <input type="text" id="datepicker" placeholder="Pick a date">
-        <div id="calendar">
+        <div class="control-center">
+            <div class="pick row">
+                <p class="input-help-text">Looking for something you heard recently?</p>
+                <input type="text" id="datepicker" placeholder="Pick a date">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><i class="icon ion-headphone"></i> <a id="audio-player" href="http://www.vpr.net/apps/audio-player/">Launch Audio Player</a></p>
+                </div>
+                <div class="col-sm-6">
+                    <p><i class="icon ion-home"></i> <a href="http://digital.vpr.net/programs/vpr-classical">VPR Classical Homepage</a></p>
+                </div>
+            </div>
         </div>
+        <div id="calendar"></div>
     </div>
     <div class="col-sm-5">
         {% include "_underwriter.html" %}

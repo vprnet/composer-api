@@ -1,6 +1,38 @@
+
+<div class="row schedule">
+    <div class="col-xs-12">
+        <h2>Schedule for {{ dateString }}</h2>
+        <p class="click-to-playlist">Click on a program to see it's playlist</p>
+    </div>
+
+    <div class="col-sm-6">
+        <h3>Program Starts In AM</h3>
+        {{# each dailySchedule }}
+            {{# if am }}
+                <div class="listing">
+                    <p class="program-time">{{ start }} - {{ end }}</p>
+                    <h4><a href="#{{ id }}">{{ name }}</a></h4>
+                </div>
+            {{/ if }}
+        {{/ each }}
+    </div>
+
+    <div class="col-sm-6">
+        <h3>Program Starts In PM</h3>
+        {{# each dailySchedule }}
+            {{# unless am }}
+                <div class="listing">
+                    <p class="program-time">{{ start }} - {{ end }}</p>
+                    <h4><a href="#{{ id }}">{{ name }}</a></h4>
+                </div>
+            {{/ unless }}
+        {{/ each }}
+    </div>
+</div>
+
 <h2 id="playlist-date">Playlist for {{ dateString }}</h2>
 
-{{#each dailySchedule}}
+{{# each dailySchedule }}
     <div id="{{ id }}" class="program">
         {{# if link }}
         <h2><a href="{{ link }}">{{ name }}</a></h2>
@@ -14,7 +46,7 @@
                 <div class="song">
                     <p class="composer">{{ composerName }} - {{ trackName }}</p>
                     <p class="start-time">{{ startTime }}</p>
-                    <p class="purchase"><a href="{{ link }}">Purchase Song</a></p>
+                    <p class="purchase"><a href="{{ link }}">More Info/Purchase Song</a></p>
                 </div>
                 {{/each}}
             {{ else }}
@@ -24,6 +56,5 @@
                 {{/ if }}
             {{/ if }}
         </div>
-        <a href="?date={{ date }}#{{ id }}"><i class="icon ion-link"></i></a>
     </div>
 {{/each}}

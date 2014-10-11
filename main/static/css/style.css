@@ -5164,13 +5164,13 @@ footer span#copyright {
 }
 
 /* line 85, ../dev/sass/_vpr.scss */
-#underwriter {
+#underwriter, #marcomm {
   max-width: 300px;
   margin: 0 auto;
   min-height: 300px;
 }
 /* line 89, ../dev/sass/_vpr.scss */
-#underwriter p {
+#underwriter p, #marcomm p {
   font-size: 12px;
   padding-left: 0;
   margin-top: 3px;
@@ -5178,13 +5178,13 @@ footer span#copyright {
   color: #8f9294;
 }
 /* line 95, ../dev/sass/_vpr.scss */
-#underwriter p li {
+#underwriter p li, #marcomm p li {
   display: inline;
 }
 @media (max-width: 330px) {
   /* line 85, ../dev/sass/_vpr.scss */
-  #underwriter {
-    margin-left: -5px;
+  #underwriter, #marcomm {
+    margin-left: -10px;
   }
 }
 
@@ -8803,7 +8803,19 @@ div.program h2 {
   margin-bottom: 0;
   font-size: 32px;
 }
-/* line 26, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 22, ../dev/sass/style.scss */
+  div.program h2 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 500px) {
+  /* line 22, ../dev/sass/style.scss */
+  div.program h2 {
+    font-size: 18px;
+  }
+}
+/* line 32, ../dev/sass/style.scss */
 div.program .program-time {
   margin: 0 0 15px;
   color: #75787b;
@@ -8812,7 +8824,13 @@ div.program .program-time {
   font-weight: 500;
   padding-left: 2px;
 }
-/* line 34, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 32, ../dev/sass/style.scss */
+  div.program .program-time {
+    font-size: 14px;
+  }
+}
+/* line 43, ../dev/sass/style.scss */
 div.program div.playlist {
   font-size: 18px;
   padding-left: 20px;
@@ -8820,30 +8838,55 @@ div.program div.playlist {
   margin-left: 2px;
   border-left: 7px solid #c3c5c6;
 }
-/* line 40, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 43, ../dev/sass/style.scss */
+  div.program div.playlist {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 43, ../dev/sass/style.scss */
+  div.program div.playlist {
+    border-left: 4px solid #c3c5c6;
+    padding-left: 10px;
+  }
+}
+/* line 56, ../dev/sass/style.scss */
 div.program div.playlist div.song {
   margin: 10px 0;
 }
-/* line 42, ../dev/sass/style.scss */
+/* line 58, ../dev/sass/style.scss */
 div.program div.playlist div.song p {
   font-size: 18px;
   margin: 0;
   line-height: 1.3em;
 }
-/* line 47, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 58, ../dev/sass/style.scss */
+  div.program div.playlist div.song p {
+    font-size: 16px;
+  }
+}
+/* line 66, ../dev/sass/style.scss */
 div.program div.playlist div.song .composer {
   font-weight: 600;
 }
-/* line 50, ../dev/sass/style.scss */
+/* line 69, ../dev/sass/style.scss */
 div.program div.playlist div.song .start-time {
   color: #75787b;
 }
-/* line 53, ../dev/sass/style.scss */
+/* line 72, ../dev/sass/style.scss */
 div.program div.playlist div.song .purchase, div.program div.playlist div.song .start-time {
   font-size: 15px;
   font-weight: 500;
 }
-/* line 60, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 72, ../dev/sass/style.scss */
+  div.program div.playlist div.song .purchase, div.program div.playlist div.song .start-time {
+    font-size: 13px;
+  }
+}
+/* line 81, ../dev/sass/style.scss */
 div.program i.icon {
   display: none;
   position: absolute;
@@ -8851,20 +8894,114 @@ div.program i.icon {
   right: 0;
   font-size: 36px;
 }
-/* line 68, ../dev/sass/style.scss */
+/* line 89, ../dev/sass/style.scss */
 div.program:hover i.icon {
   display: block;
 }
 
-/* line 74, ../dev/sass/style.scss */
+/* line 95, ../dev/sass/style.scss */
 #playlist-date {
   margin-bottom: 20px;
   text-decoration: underline;
   font-size: 42px;
 }
+@media (max-width: 768px) {
+  /* line 95, ../dev/sass/style.scss */
+  #playlist-date {
+    font-size: 24px;
+  }
+}
 
-/* line 80, ../dev/sass/style.scss */
-#datepicker {
+/* line 105, ../dev/sass/style.scss */
+.schedule {
+  background: #eaebeb;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+/* line 111, ../dev/sass/style.scss */
+.schedule:hover .click-to-playlist {
+  color: #e3624f;
+}
+/* line 115, ../dev/sass/style.scss */
+.schedule h2 {
+  font-size: 32px;
+  text-decoration: underline;
+  margin-bottom: 0;
+  text-align: center;
+}
+@media (max-width: 500px) {
+  /* line 115, ../dev/sass/style.scss */
+  .schedule h2 {
+    font-size: 22px;
+  }
+}
+/* line 124, ../dev/sass/style.scss */
+.schedule .click-to-playlist {
+  text-align: center;
+}
+@media (max-width: 500px) {
+  /* line 124, ../dev/sass/style.scss */
+  .schedule .click-to-playlist {
+    margin-bottom: 15px;
+  }
+}
+/* line 130, ../dev/sass/style.scss */
+.schedule h3 {
+  font-size: 18px;
+  text-decoration: underline;
+}
+/* line 134, ../dev/sass/style.scss */
+.schedule h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+/* line 138, ../dev/sass/style.scss */
+.schedule p {
+  font-size: 12px;
+  color: #75787b;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* line 146, ../dev/sass/style.scss */
+.control-center {
+  text-align: center;
+  padding: 15px;
+  color: #f2f2f2;
+  background: #468de5;
+}
+/* line 150, ../dev/sass/style.scss */
+.control-center p {
+  font-size: 18px;
+}
+@media (max-width: 500px) {
+  /* line 150, ../dev/sass/style.scss */
+  .control-center p {
+    font-size: 14px;
+  }
+}
+/* line 157, ../dev/sass/style.scss */
+.control-center a {
+  color: #f2f2f2;
+  text-decoration: underline;
+}
+/* line 160, ../dev/sass/style.scss */
+.control-center a:hover {
+  color: #f5c4bd;
+}
+/* line 164, ../dev/sass/style.scss */
+.control-center .pick {
+  margin-bottom: 10px;
+}
+@media (max-width: 500px) {
+  /* line 164, ../dev/sass/style.scss */
+  .control-center .pick {
+    margin-bottom: 25px;
+  }
+}
+/* line 169, ../dev/sass/style.scss */
+.control-center .pick #datepicker {
   display: inline-block;
   width: 200px;
   -webkit-border-radius: 3px;
@@ -8875,11 +9012,18 @@ div.program:hover i.icon {
   font-size: 14px;
   text-align: center;
   padding: 1px;
+  margin-bottom: 0;
+  color: #75787b !important;
 }
-
-/* line 89, ../dev/sass/style.scss */
-p.input-help-text {
+/* line 180, ../dev/sass/style.scss */
+.control-center .pick p.input-help-text {
   display: inline-block;
-  font-size: 18px;
   margin-right: 15px;
+}
+@media (max-width: 500px) {
+  /* line 180, ../dev/sass/style.scss */
+  .control-center .pick p.input-help-text {
+    margin-right: 0;
+    font-size: 16px;
+  }
 }

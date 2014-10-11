@@ -1,7 +1,8 @@
-var state;
+var test;
 (function () {
     var httpRequest,
         date = new Date(),
+        launchAudio = document.getElementById('audio-player'),
         zeroPaddedNumber = function(n) {
             if (n < 10) {
                 n = '0' + n;
@@ -12,8 +13,16 @@ var state;
             // concatenate API call with URL string
             if (typeof d === 'undefined') {
                 if (window.location.search.indexOf('?') !== (-1)) {
+                    // d is passed to API call; date is update as side effect
                     d = window.location.search.split('=')[1];
-                    date = new Date(d.split('-'));
+
+                    var dateArray = d.split('-'),
+                        year = dateArray[0],
+                        month = dateArray[1] - 1,
+                        day = dateArray[2];
+
+                    date = new Date(year, month, day);
+
                 } else {
                     d = getDateString(new Date());
                 }
@@ -57,7 +66,6 @@ var state;
         },
         sendRequest = function(d) {
             httpRequest.open('GET', query(d));
-            console.log(query(d));
             httpRequest.send();
         },
         convertTime = function(timestamp) {
@@ -82,6 +90,7 @@ var state;
             this.name = programObject.program.name;
             this.id = this.name.replace(/\s+/g, '-');
             this.start = convertTime(programObject.start_time);
+            this.am = (this.start.indexOf('AM') !== -1);
             this.end = convertTime(programObject.end_time);
             this.link = programObject.program.program_link;
             this.date = programObject.date;
@@ -150,9 +159,29 @@ var state;
 
     History.Adapter.bind(window, 'statechange', function() {
         var state = History.getState(),
-            d = state.data.date;
+            d = state.data.date,
+            dateArray,
+            year,
+            month,
+            day;
 
-        date = new Date(d.split('-'));
+        if (typeof d !== 'undefined') {
+            dateArray = d.split('-');
+            year = dateArray[0];
+            month = dateArray[1] - 1;
+            day = dateArray[2];
+            date = new Date(year, month, day);
+        } else {
+            date = new Date();
+        }
+
         sendRequest(d);
     });
+
+    $('#audio-player').on('click', function(e) {
+        window.open($(this).attr("href"), "audioPlayer", "resizable = 0, status = 0, toolbar = 0, location = 0, menubar = 0, directories = 0, scrollbars = 1, width = 800, height = 600");
+        return false;
+    });
+
+
 })();

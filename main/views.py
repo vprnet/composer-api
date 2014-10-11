@@ -21,7 +21,14 @@ def playlist_calendar():
     page_title = 'VPR Classical Playlist Calendar'
     page_url = FREEZER_BASE_URL.rstrip('/') + request.path
 
-    social = False
+    social = {
+        'title': "Playlist Calendar",
+        'subtitle': "",
+        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
+        'description': "Drug addiction affects many in the Vermont community. Traces is an attempt to catalog the memories and feelings of Vermonters affected by addiction, and an exploration of the deep and subtle ways that addiction leaves its mark.",
+        'twitter_text': "VPR is exploring the deep and subtle ways that drug addiction in Vermont leaves its mark.",
+        'twitter_hashtag': "VT, VtTraces"
+    }
 
     return render_template('content.html',
         page_title=page_title,

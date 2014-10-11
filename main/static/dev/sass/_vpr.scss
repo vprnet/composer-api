@@ -82,7 +82,7 @@ footer {
     }
 }
 
-#underwriter {
+#underwriter, #marcomm {
     max-width: 300px;
     margin: 0 auto;
     min-height: 300px;
@@ -97,6 +97,6 @@ footer {
         }
     }
     @media (max-width: 330px) {
-        margin-left: -5px;
+        margin-left: -10px;
     }
 }
