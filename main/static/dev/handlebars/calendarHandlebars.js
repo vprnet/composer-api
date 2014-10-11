@@ -83,7 +83,7 @@ templates['playlistCalendar'] = template({"1":function(depth0,helpers,partials,d
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "\n<div class=\"row schedule\">\n    <div class=\"col-xs-12\">\n        <h2>Schedule for "
     + escapeExpression(((helper = (helper = helpers.dateString || (depth0 != null ? depth0.dateString : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"dateString","hash":{},"data":data}) : helper)))
-    + "</h2>\n        <p class=\"click-to-playlist\">Click on a program to see it's playlist</p>\n    </div>\n\n    <div class=\"col-sm-6\">\n        <h3>Program Starts In AM</h3>\n";
+    + "</h2>\n        <p class=\"click-to-playlist\">Click on a program to see its playlist</p>\n    </div>\n\n    <div class=\"col-sm-6\">\n        <h3>Program Starts In AM</h3>\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.dailySchedule : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "    </div>\n\n    <div class=\"col-sm-6\">\n        <h3>Program Starts In PM</h3>\n";

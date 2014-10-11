@@ -134,6 +134,7 @@ var test;
         picker = new Pikaday({
             field: document.getElementById('datepicker'),
             maxDate: new Date(),
+            position: "bottom left",
             onSelect: function() {
                 var d;
                 date = this.getDate();

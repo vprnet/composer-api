@@ -165,6 +165,7 @@ div.program {
         margin-bottom: 10px;
         @media (max-width: $phone) {
             margin-bottom: 25px;
+            padding: 10px 0;
         }
         #datepicker {
             display: inline-block;
@@ -182,7 +183,9 @@ div.program {
             margin-right: 15px;
             @media (max-width: $phone) {
                 margin-right: 0;
-                font-size: 16px;
+                font-size: 24px;
+                line-height: 1.0em;
+                padding: 15px 0;
             }
         }
     }

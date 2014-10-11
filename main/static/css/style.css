@@ -8998,9 +8998,10 @@ div.program:hover i.icon {
   /* line 164, ../dev/sass/style.scss */
   .control-center .pick {
     margin-bottom: 25px;
+    padding: 10px 0;
   }
 }
-/* line 169, ../dev/sass/style.scss */
+/* line 170, ../dev/sass/style.scss */
 .control-center .pick #datepicker {
   display: inline-block;
   width: 200px;
@@ -9015,15 +9016,17 @@ div.program:hover i.icon {
   margin-bottom: 0;
   color: #75787b !important;
 }
-/* line 180, ../dev/sass/style.scss */
+/* line 181, ../dev/sass/style.scss */
 .control-center .pick p.input-help-text {
   display: inline-block;
   margin-right: 15px;
 }
 @media (max-width: 500px) {
-  /* line 180, ../dev/sass/style.scss */
+  /* line 181, ../dev/sass/style.scss */
   .control-center .pick p.input-help-text {
     margin-right: 0;
-    font-size: 16px;
+    font-size: 24px;
+    line-height: 1.0em;
+    padding: 15px 0;
   }
 }

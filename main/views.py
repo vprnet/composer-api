@@ -24,10 +24,10 @@ def playlist_calendar():
     social = {
         'title': "Playlist Calendar",
         'subtitle': "",
-        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
-        'description': "Drug addiction affects many in the Vermont community. Traces is an attempt to catalog the memories and feelings of Vermonters affected by addiction, and an exploration of the deep and subtle ways that addiction leaves its mark.",
-        'twitter_text': "VPR is exploring the deep and subtle ways that drug addiction in Vermont leaves its mark.",
-        'twitter_hashtag': "VT, VtTraces"
+        'img': "http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201407/vpr-classical-hosts.jpg",
+        'description': "Looking for a piece you heard on VPR Classical today, yesterday or last month? Find it here!",
+        'twitter_text': "Looking for something you heard on VPR Classical? Try our playlist calendar!",
+        'twitter_hashtag': "Classical"
     }
 
     return render_template('content.html',
