@@ -8,9 +8,14 @@
 <div id="song">
     <h4>Playing Now</h4>
     <p>{{ trackOnNow.composer }} - {{ trackOnNow.name }} ({{ trackOnNow.start }})</p>
+    <p class="info">{{# if trackOnNow.ensemble }}{{ trackOnNow.ensemble }}{{# if trackOnNow.conductor }} / {{/ if }}{{/ if }}{{# if trackOnNow.conductor }}{{ trackOnNow.conductor }}{{/ if }}</p>
+    {{# each trackOnNow.soloists }}
+    <p>{{ this }}</p>
+    {{/ each }}
+    <p><a href="{{ trackOnNow.link }}" alt="Link to purchase piece">{{ trackOnNow.copyright }} {{ trackOnNow.catalogNumber }}</a></p>
 </div>
 {{ else }}
-<p id="no-playlist">Playlist not available. {{# if programOnNow.link }}<a href="{{ programOnNow.link }}" target="_blank">Contact the host</a> to inquire about a piece.</p>{{/if}}
+<p id="no-playlist">For playlist information {{# if programOnNow.link }}<a href="{{ programOnNow.link }}" target="_blank">contact the host</a>.</p>{{/if}}
 {{/if}}
 
 <div id="up-next">
@@ -18,3 +23,5 @@
     <h3>{{ programUpNext.name }}</h3>
     <p>{{ programUpNext.start }} - {{ programUpNext.end }}</p>
 </div>
+
+<p class="calendar-link">For something you heard earlier, see the <a href="http://www.vpr.net/apps/composer/playlist-calendar">Playlist Calendar</a></p>

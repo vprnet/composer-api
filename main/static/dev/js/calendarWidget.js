@@ -128,7 +128,6 @@ var test;
             this.soloists = function() {
                 var artists = songObject.artistName.split(';');
                 artists.shift();
-                console.log(artists);
                 return artists;
             };
             this.copyright = songObject.copyright;

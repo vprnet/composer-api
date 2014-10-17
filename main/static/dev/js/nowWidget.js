@@ -58,7 +58,17 @@
                 trackOnNow = {
                     'name': data.onNow.song.trackName,
                     'composer': data.onNow.song.composerName,
-                    'start': convertTime(data.onNow.song._start_time.split(' ')[1])
+                    'start': convertTime(data.onNow.song._start_time.split(' ')[1]),
+                    'link': data.onNow.song.buy.arkiv,
+                    'conductor': data.onNow.song.conductor,
+                    'ensemble': data.onNow.song.artistName.split(';')[0],
+                    'soloists': function() {
+                        var artists = data.onNow.song.artistName.split(';');
+                        artists.shift();
+                        return artists;
+                    },
+                    'copyright': data.onNow.song.copyright,
+                    'catalogNumber': data.onNow.song.catalogNumber
                 };
             }
 

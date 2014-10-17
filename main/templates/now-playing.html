@@ -12,7 +12,7 @@
 
     h2 {
         font-weight: 600;
-        margin: 15px 0;
+        margin: 15px 0 10px;
         text-decoration: underline;
     }
 
@@ -30,6 +30,9 @@
     div {
         margin-bottom: 5px;
     }
+    .calendar-link {
+        margin-top: 10px;
+    }
 </style>
 
 </head>
@@ -39,7 +42,7 @@
 <div id="playing-now">
 </div>
 
-<script src="{{ url_for('static', filename='js/nowScript.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/nowScript.min.js') }}?ver=1.0"></script>
 
 </body>
 </html>
