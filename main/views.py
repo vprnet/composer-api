@@ -22,7 +22,7 @@ def playlist_calendar():
     page_url = FREEZER_BASE_URL.rstrip('/') + request.path
 
     social = {
-        'title': "Playlist Calendar",
+        'title': "VPR Classical Playlist Calendar",
         'subtitle': "",
         'img': "http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201407/vpr-classical-hosts.jpg",
         'description': "Looking for a piece you heard on VPR Classical today, yesterday or last month? Find it here!",

@@ -1,4 +1,3 @@
-
 <div class="row schedule">
     <div class="col-xs-12">
         <h2>Schedule for {{ dateString }}</h2>
@@ -44,9 +43,13 @@
             {{# if playlist }}
                 {{#each  playlist }}
                 <div class="song">
-                    <p class="composer">{{ composerName }} - {{ trackName }}</p>
                     <p class="start-time">{{ startTime }}</p>
-                    <p class="purchase"><a href="{{ link }}">More Info/Purchase Song</a></p>
+                    <p class="composer">{{ composerName }}{{# if composerName }}{{# if trackName }} - {{/ if }}{{/ if }}{{ trackName }}</p>
+                    <p class="info">{{# if ensemble }}{{ ensemble }}{{# if conductor }} / {{/ if }}{{/ if }}{{# if conductor }}{{ conductor }}{{/ if }}</p>
+                    {{# each soloists }}
+                    <p class="info">{{ this }}</p>
+                    {{/ each }}
+                    <p class="purchase"><a href="{{ link }}">{{ copyright }} {{ catalogNumber }}</a></p>
                 </div>
                 {{/each}}
             {{ else }}

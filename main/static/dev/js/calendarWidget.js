@@ -121,8 +121,18 @@ var test;
         Song = function(songObject) {
             this.trackName = songObject.trackName;
             this.composerName = songObject.composerName;
+            this.conductor = songObject.conductor;
             this.startTime = convertTime(songObject._start_time.split(' ')[1]);
             this.link = songObject.buy.arkiv;
+            this.ensemble = songObject.artistName.split(';')[0];
+            this.soloists = function() {
+                var artists = songObject.artistName.split(';');
+                artists.shift();
+                console.log(artists);
+                return artists;
+            };
+            this.copyright = songObject.copyright;
+            this.catalogNumber = songObject.catalogNumber;
         },
         dailySchedule = function(data) {
             var programs = [];

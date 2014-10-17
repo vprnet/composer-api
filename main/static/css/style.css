@@ -8857,36 +8857,51 @@ div.program div.playlist div.song {
 }
 /* line 58, ../dev/sass/style.scss */
 div.program div.playlist div.song p {
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
   line-height: 1.3em;
 }
 @media (max-width: 768px) {
   /* line 58, ../dev/sass/style.scss */
   div.program div.playlist div.song p {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 /* line 66, ../dev/sass/style.scss */
 div.program div.playlist div.song .composer {
   font-weight: 600;
+  font-size: 18px;
 }
-/* line 69, ../dev/sass/style.scss */
+@media (max-width: 768px) {
+  /* line 66, ../dev/sass/style.scss */
+  div.program div.playlist div.song .composer {
+    font-size: 16px;
+  }
+}
+/* line 73, ../dev/sass/style.scss */
 div.program div.playlist div.song .start-time {
   color: #75787b;
 }
-/* line 72, ../dev/sass/style.scss */
+/* line 76, ../dev/sass/style.scss */
+div.program div.playlist div.song .info {
+  color: #5c5e61;
+}
+/* line 79, ../dev/sass/style.scss */
 div.program div.playlist div.song .purchase, div.program div.playlist div.song .start-time {
   font-size: 15px;
   font-weight: 500;
 }
 @media (max-width: 768px) {
-  /* line 72, ../dev/sass/style.scss */
+  /* line 79, ../dev/sass/style.scss */
   div.program div.playlist div.song .purchase, div.program div.playlist div.song .start-time {
     font-size: 13px;
   }
 }
-/* line 81, ../dev/sass/style.scss */
+/* line 86, ../dev/sass/style.scss */
+div.program div.playlist div.song .purchase {
+  margin-top: 3px;
+}
+/* line 91, ../dev/sass/style.scss */
 div.program i.icon {
   display: none;
   position: absolute;
@@ -8894,36 +8909,36 @@ div.program i.icon {
   right: 0;
   font-size: 36px;
 }
-/* line 89, ../dev/sass/style.scss */
+/* line 99, ../dev/sass/style.scss */
 div.program:hover i.icon {
   display: block;
 }
 
-/* line 95, ../dev/sass/style.scss */
+/* line 105, ../dev/sass/style.scss */
 #playlist-date {
   margin-bottom: 20px;
   text-decoration: underline;
   font-size: 42px;
 }
 @media (max-width: 768px) {
-  /* line 95, ../dev/sass/style.scss */
+  /* line 105, ../dev/sass/style.scss */
   #playlist-date {
     font-size: 24px;
   }
 }
 
-/* line 105, ../dev/sass/style.scss */
+/* line 115, ../dev/sass/style.scss */
 .schedule {
   background: #eaebeb;
   padding-top: 20px;
   padding-bottom: 10px;
   margin-bottom: 40px;
 }
-/* line 111, ../dev/sass/style.scss */
+/* line 121, ../dev/sass/style.scss */
 .schedule:hover .click-to-playlist {
   color: #e3624f;
 }
-/* line 115, ../dev/sass/style.scss */
+/* line 125, ../dev/sass/style.scss */
 .schedule h2 {
   font-size: 32px;
   text-decoration: underline;
@@ -8931,32 +8946,32 @@ div.program:hover i.icon {
   text-align: center;
 }
 @media (max-width: 500px) {
-  /* line 115, ../dev/sass/style.scss */
+  /* line 125, ../dev/sass/style.scss */
   .schedule h2 {
     font-size: 22px;
   }
 }
-/* line 124, ../dev/sass/style.scss */
+/* line 134, ../dev/sass/style.scss */
 .schedule .click-to-playlist {
   text-align: center;
 }
 @media (max-width: 500px) {
-  /* line 124, ../dev/sass/style.scss */
+  /* line 134, ../dev/sass/style.scss */
   .schedule .click-to-playlist {
     margin-bottom: 15px;
   }
 }
-/* line 130, ../dev/sass/style.scss */
+/* line 140, ../dev/sass/style.scss */
 .schedule h3 {
   font-size: 18px;
   text-decoration: underline;
 }
-/* line 134, ../dev/sass/style.scss */
+/* line 144, ../dev/sass/style.scss */
 .schedule h4 {
   margin-top: 0;
   font-size: 16px;
 }
-/* line 138, ../dev/sass/style.scss */
+/* line 148, ../dev/sass/style.scss */
 .schedule p {
   font-size: 12px;
   color: #75787b;
@@ -8964,44 +8979,44 @@ div.program:hover i.icon {
   margin-bottom: 0;
 }
 
-/* line 146, ../dev/sass/style.scss */
+/* line 156, ../dev/sass/style.scss */
 .control-center {
   text-align: center;
   padding: 15px;
   color: #f2f2f2;
   background: #468de5;
 }
-/* line 150, ../dev/sass/style.scss */
+/* line 160, ../dev/sass/style.scss */
 .control-center p {
   font-size: 18px;
 }
 @media (max-width: 500px) {
-  /* line 150, ../dev/sass/style.scss */
+  /* line 160, ../dev/sass/style.scss */
   .control-center p {
     font-size: 14px;
   }
 }
-/* line 157, ../dev/sass/style.scss */
+/* line 167, ../dev/sass/style.scss */
 .control-center a {
   color: #f2f2f2;
   text-decoration: underline;
 }
-/* line 160, ../dev/sass/style.scss */
+/* line 170, ../dev/sass/style.scss */
 .control-center a:hover {
   color: #f5c4bd;
 }
-/* line 164, ../dev/sass/style.scss */
+/* line 174, ../dev/sass/style.scss */
 .control-center .pick {
   margin-bottom: 10px;
 }
 @media (max-width: 500px) {
-  /* line 164, ../dev/sass/style.scss */
+  /* line 174, ../dev/sass/style.scss */
   .control-center .pick {
     margin-bottom: 25px;
     padding: 10px 0;
   }
 }
-/* line 170, ../dev/sass/style.scss */
+/* line 180, ../dev/sass/style.scss */
 .control-center .pick #datepicker {
   display: inline-block;
   width: 200px;
@@ -9016,13 +9031,13 @@ div.program:hover i.icon {
   margin-bottom: 0;
   color: #75787b !important;
 }
-/* line 181, ../dev/sass/style.scss */
+/* line 191, ../dev/sass/style.scss */
 .control-center .pick p.input-help-text {
   display: inline-block;
   margin-right: 15px;
 }
 @media (max-width: 500px) {
-  /* line 181, ../dev/sass/style.scss */
+  /* line 191, ../dev/sass/style.scss */
   .control-center .pick p.input-help-text {
     margin-right: 0;
     font-size: 24px;

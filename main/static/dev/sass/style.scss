@@ -56,18 +56,25 @@ div.program {
         div.song {
             margin: 10px 0;
             p {
-                font-size: 18px;
+                font-size: 16px;
                 margin: 0;
                 line-height: 1.3em;
                 @media (max-width: $tablet) {
-                    font-size: 16px;
+                    font-size: 14px;
                 }
             }
             .composer {
                 font-weight: 600;
+                font-size: 18px;
+                @media (max-width: $tablet) {
+                    font-size: 16px;
+                }
             }
             .start-time {
                 color: $gray;
+            }
+            .info {
+                color: darken($gray, 10%);
             }
             .purchase, .start-time {
                 font-size: 15px;
@@ -75,6 +82,9 @@ div.program {
                     font-size: 13px;
                 }
                 font-weight: 500;
+            }
+            .purchase {
+                margin-top: 3px;
             }
         }
     }
