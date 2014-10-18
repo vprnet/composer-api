@@ -12,7 +12,7 @@
     {{# each trackOnNow.soloists }}
     <p>{{ this }}</p>
     {{/ each }}
-    <p><a href="{{ trackOnNow.link }}" alt="Link to purchase piece">{{ trackOnNow.copyright }} {{ trackOnNow.catalogNumber }}</a></p>
+    <p><a href="{{ trackOnNow.link }}" alt="Link to purchase piece" target="_blank">{{ trackOnNow.copyright }} {{ trackOnNow.catalogNumber }}</a></p>
 </div>
 {{ else }}
 <p id="no-playlist">For playlist information {{# if programOnNow.link }}<a href="{{ programOnNow.link }}" target="_blank">contact the host</a>.</p>{{/if}}
@@ -24,4 +24,4 @@
     <p>{{ programUpNext.start }} - {{ programUpNext.end }}</p>
 </div>
 
-<p class="calendar-link">For something you heard earlier, see the <a href="http://www.vpr.net/apps/composer/playlist-calendar">Playlist Calendar</a></p>
+<p class="calendar-link">For something you heard earlier, see the <a href="http://www.vpr.net/apps/composer/playlist-calendar" target="_blank" alt="VPR Classical Playlist calendar">Playlist Calendar</a></p>

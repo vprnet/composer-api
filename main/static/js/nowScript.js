@@ -678,7 +678,7 @@ templates['playingNow'] = template({"1":function(depth0,helpers,partials,data) {
   if (stack1 != null) { buffer += stack1; }
   return buffer + "    <p><a href=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.trackOnNow : depth0)) != null ? stack1.link : stack1), depth0))
-    + "\" alt=\"Link to purchase piece\">"
+    + "\" alt=\"Link to purchase piece\" target=\"_blank\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.trackOnNow : depth0)) != null ? stack1.copyright : stack1), depth0))
     + " "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.trackOnNow : depth0)) != null ? stack1.catalogNumber : stack1), depth0))
@@ -724,7 +724,7 @@ templates['playingNow'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.start : stack1), depth0))
     + " - "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.programUpNext : depth0)) != null ? stack1.end : stack1), depth0))
-    + "</p>\n</div>\n\n<p class=\"calendar-link\">For something you heard earlier, see the <a href=\"http://www.vpr.net/apps/composer/playlist-calendar\">Playlist Calendar</a></p>\n";
+    + "</p>\n</div>\n\n<p class=\"calendar-link\">For something you heard earlier, see the <a href=\"http://www.vpr.net/apps/composer/playlist-calendar\" target=\"_blank\" alt=\"VPR Classical Playlist calendar\">Playlist Calendar</a></p>\n";
 },"useData":true});
 })();
 (function() {
