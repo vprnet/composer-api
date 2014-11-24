@@ -111,9 +111,9 @@ templates['playlistCalendar'] = template({"1":function(depth0,helpers,partials,d
   return "";
 },"28":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "                    <p>Playlist is unavailable for this program. <a href=\""
+  return "                    <p>Visit the <a href=\""
     + escapeExpression(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"link","hash":{},"data":data}) : helper)))
-    + "\">Contact the host</a> for playlist information</p>\n";
+    + "\">program website</a> for playlist information or to contact the show.</p>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"row schedule\">\n    <div class=\"col-xs-12\">\n        <h2>Schedule for "
     + escapeExpression(((helper = (helper = helpers.dateString || (depth0 != null ? depth0.dateString : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"dateString","hash":{},"data":data}) : helper)))
