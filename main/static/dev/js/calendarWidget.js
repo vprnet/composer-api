@@ -37,7 +37,7 @@ var test;
         makeHumanDate = function(d) {
             // take a Date object, convert to human readable form
             var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dev'];
+                month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             return week[d.getDay()] + ', ' + month[d.getMonth()] + ' ' + d.getDate();
         },
         callComposer = function(eventHandler) {
